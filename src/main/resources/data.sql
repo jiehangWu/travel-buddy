@@ -1,0 +1,1 @@
+insert into Postcode(code, city, country) values('111111', 'city-1', 'country-1')
