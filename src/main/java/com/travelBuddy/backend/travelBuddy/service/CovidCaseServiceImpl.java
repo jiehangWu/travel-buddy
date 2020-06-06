@@ -6,8 +6,10 @@ import com.travelBuddy.backend.travelBuddy.dao.CovidCaseDao;
 import com.travelBuddy.backend.travelBuddy.entity.CovidCase;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class CovidCaseServiceImpl implements CovidCaseService {
 
     @Autowired

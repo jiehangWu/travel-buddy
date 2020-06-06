@@ -20,8 +20,8 @@ public class CovidCaseDaoImpl implements CovidCaseDao {
     @Override
     public List<CovidCase> findAndGroupCovidCases() {
         String query = new StringBuilder()
-                        .append("select longitude lon, latitude lat, count(*)")
-                        .append("from covidcase group by (lon, lat)")
+                        .append("select longitude, latitude, count(*)")
+                        .append(" from covidcase group by (longitude, latitude)")
                         .toString();
 
         return template.query(query, new CovidCaseMapper());
@@ -30,10 +30,10 @@ public class CovidCaseDaoImpl implements CovidCaseDao {
     @Override
     public List<CovidCase> findCovidCasesByCaseType(String caseType) {
         String query = new StringBuilder()
-                        .append("select longitude lon, latitude lat, count(*)")
+                        .append("select longitude, latitude, count(*)")
                         .append("from covidcase where casetype = ")
-                        .append(caseType)
-                        .append(" group by (lon, lat)")
+                        .append("'" + caseType + "'")
+                        .append(" group by (longitude, latitude)")
                         .toString();
         
         return template.query(query, new CovidCaseMapper());

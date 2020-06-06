@@ -5,6 +5,7 @@ public class CovidCase {
     private float longitude;
     private float latitude;
     private String caseType;
+    private int count;
 
     // getters
     public String getId() {
@@ -23,6 +24,10 @@ public class CovidCase {
         return caseType;
     }
 
+    public int getCount() {
+        return count;
+    }
+
     // setters
     public void setId(String id) {
         this.id = id;
@@ -38,5 +43,9 @@ public class CovidCase {
 
     public void setCaseType(String caseType) {
         this.caseType = caseType;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
