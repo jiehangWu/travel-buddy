@@ -17,7 +17,7 @@ create table Geolocation (
 create type CovidCaseType as enum('suspected', 'confirmed', 'recovered', 'death');
 
 create table CovidCase(
-    id uuid,
+    id serial,
     longitude decimal,
     latitude decimal,
     caseType CovidCaseType,
@@ -25,14 +25,14 @@ create table CovidCase(
 );
 
 create table Contributor(
-    id uuid,
+    id serial,
     username varchar,
     password varchar,
     primary key (id)
 );
 
 create table PublicArea(
-    id uuid,
+    id serial,
     longitude decimal,
     latitude decimal,
     name char(50),
@@ -41,42 +41,42 @@ create table PublicArea(
 );
 
 create table AppUser(
-    id uuid,
+    id serial,
     username varchar,
-    passsword varchar,
+    password varchar,
     displayName varchar,
     gender char(10),
-    age integer,
+    age serial,
     email varchar,
-    acceptedRiskLevel integer,
+    acceptedRiskLevel serial,
     notificationMethod char(10),
     primary key (id),
     unique(email)
 );
 
 create table MakeComment(
-    cid uuid,
+    id serial,
     ccontent varchar,
-    upvote integer,
-    downvote integer,
+    upvote serial,
+    downvote serial,
     longitude decimal not null,
     latitude decimal not null,
-    userId uuid not null,
-    primary key (cid),
+    userId serial not null,
+    primary key (id),
     foreign key (longitude, latitude) references Geolocation(longitude, latitude) on delete no action,
     foreign key (userId) references AppUser on delete no action
 );
 
 create table Suggestion(
-    id uuid,
+    id serial,
     content varchar,
     timestamp char(50),
     primary key (id)
 );
 
 create table GiveSuggestion(
-    userId uuid,
-    suggestionId uuid,
+    userId serial,
+    suggestionId serial,
     primary key (userId, suggesionId),
     foreign key (userId) references AppUser on delete cascade,
     foreign key (suggestionId) references Suggestion on delete no action
@@ -92,9 +92,9 @@ create table Producer(
 create type EquipmentType as enum ('Goggles', 'Mask', 'Gloves', 'Other');
 
 create table SafetyEquipment(
-    id uuid,
+    id serial,
     type EquipmentType,
-    typeId uuid,
+    typeId serial,
     producerName char(50),
     description varchar,
     primary key (id),
@@ -102,26 +102,26 @@ create table SafetyEquipment(
 );
 
 create table Goggles(
-    id uuid,
+    id serial,
     type char(20),
     primary key (id)
 );
 
 create table Mask(
-    id char(50),
+    id serial,
     medicalGrade char(20),
     primary key (id)
 );
 
 create table Gloves(
-    id uuid,
+    id serial,
     material char(20),
     primary key (id)
 );
 
 create table ProvideEquipment(
-    publicAreaId uuid,
-    equipment uuid,
+    publicAreaId serial,
+    equipmentId serial,
     primary key (publicAreaId, equipmentId),
     foreign key (publicAreaId) references PublicArea on delete cascade,
     foreign key (equipmentId) references SafetyEquipment on delete no action

@@ -1,7 +1,5 @@
 package com.travelBuddy.backend.travelBuddy.service;
 
-import java.util.UUID;
-
 import com.travelBuddy.backend.travelBuddy.entity.MakeComment;
 
 import org.springframework.stereotype.Service;
@@ -10,9 +8,9 @@ import org.springframework.stereotype.Service;
 public interface MakeCommentService {
     void insertComment(MakeComment mc); 
 
-    void updateUpvote(UUID cid);
+    void updateUpvote(Long  cid);
 
-    void updateDownvote(UUID cid);
+    void updateDownvote(Long  cid);
 
-    MakeComment findCommentById(UUID id);
+    MakeComment findCommentById(Long  cid);
 }

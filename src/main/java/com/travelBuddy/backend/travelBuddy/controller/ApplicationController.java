@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/")
@@ -51,9 +50,9 @@ public class ApplicationController {
         return covidCaseService.findAndGroupCovidCases();
     }
 
-    @RequestMapping(value = "/covidcaselist/casetype", method = RequestMethod.GET)
+    @RequestMapping(value = "/covidcaselist/case", method = RequestMethod.GET)
     @ResponseBody
-    public List<CovidCase> getCovidCaseByCase(@RequestParam(value = "casetype") String caseType) {
+    public List<CovidCase> getCovidCaseByCase(@RequestParam(value = "type") String caseType) {
         return covidCaseService.findCovidCasesByCaseType(caseType);
     }
 
@@ -63,21 +62,21 @@ public class ApplicationController {
     }
 
     @RequestMapping(value = "/upvote", method = RequestMethod.PUT)
-    public void updateUpvote(@RequestBody String id) {
-        UUID cid = UUID.fromString(id);
-        makeCommentService.updateUpvote(cid);
+    public void updateUpvote(@RequestParam(value = "id") String cid) {
+        Long id = Long.parseLong(cid);
+        makeCommentService.updateUpvote(id);
     }
 
     @RequestMapping(value = "/downvote", method = RequestMethod.PUT)
-    public void updateDownvote(@RequestBody String id) {
-        UUID cid = UUID.fromString(id);
-        makeCommentService.updateDownvote(cid);
+    public void updateDownvote(@RequestParam(value = "id") String cid) {
+        Long id = Long.parseLong(cid);
+        makeCommentService.updateDownvote(id);
     }
 
     @RequestMapping(value = "/comment", method = RequestMethod.GET)
     @ResponseBody
-    public MakeComment getCommentById(@RequestParam(value = "id") String id) {
-        UUID cid = UUID.fromString(id);
-        return makeCommentService.findCommentById(cid);
+    public MakeComment getCommentById(@RequestParam(value = "id") String cid) {
+        Long id = Long.parseLong(cid);
+        return makeCommentService.findCommentById(id);
     }
 }

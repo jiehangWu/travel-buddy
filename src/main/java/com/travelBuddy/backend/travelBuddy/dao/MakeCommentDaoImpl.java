@@ -1,7 +1,5 @@
 package com.travelBuddy.backend.travelBuddy.dao;
 
-import java.util.UUID;
-
 import com.travelBuddy.backend.travelBuddy.entity.MakeComment;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -33,7 +31,6 @@ public class MakeCommentDaoImpl implements MakeCommentDao {
                             .toString();
 
         KeyHolder holder = new GeneratedKeyHolder();
-        System.out.println(mc.getUserId());
         SqlParameterSource param = new MapSqlParameterSource()
                                     .addValue("ccontent", mc.getCcontent())
                                     .addValue("upvote", mc.getUpvote())
@@ -45,36 +42,36 @@ public class MakeCommentDaoImpl implements MakeCommentDao {
     }
 
     @Override
-    public void updateUpvote(UUID cid) {
-        MakeComment mc = findCommentById(cid);
+    public void updateUpvote(Long id) {
+        MakeComment mc = findCommentById(id);
         mc.updateUpvote();
-        final String sql = "update MakeComment set upvote=:upvote where cid=:cid";
+        final String sql = "update MakeComment set upvote=:upvote where id=:id";
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
-                                    .addValue("cid", mc.getId())
+                                    .addValue("id", mc.getId())
                                     .addValue("upvote", mc.getUpvote());
         
         template.update(sql, param, holder);
     }
 
     @Override
-    public void updateDownvote(UUID cid) {
-        MakeComment mc = findCommentById(cid);
+    public void updateDownvote(Long  id) {
+        MakeComment mc = findCommentById(id);
         mc.updateDownvote();
-        final String sql = "update MakeComment set downvote=:downvote where cid=:cid";
+        final String sql = "update MakeComment set downvote=:downvote where id=:id";
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
-                                    .addValue("cid", mc.getId())
+                                    .addValue("id", mc.getId())
                                     .addValue("downvote", mc.getDownvote());
         
         template.update(sql, param, holder);
     }
 
     @Override
-    public MakeComment findCommentById(UUID id) {
-        final String sql = "select * from MakeComment where cid=:cid";
+    public MakeComment findCommentById(Long  id) {
+        final String sql = "select * from MakeComment where id=:id";
         SqlParameterSource param = new MapSqlParameterSource()
-                                    .addValue("cid", id);
+                                    .addValue("id", id);
         
         return (MakeComment) template.queryForObject(sql, param, new BeanPropertyRowMapper(MakeComment.class));
     }

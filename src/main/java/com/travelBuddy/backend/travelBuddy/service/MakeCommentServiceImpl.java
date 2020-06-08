@@ -1,7 +1,5 @@
 package com.travelBuddy.backend.travelBuddy.service;
 
-import java.util.UUID;
-
 import com.travelBuddy.backend.travelBuddy.dao.MakeCommentDao;
 import com.travelBuddy.backend.travelBuddy.entity.MakeComment;
 
@@ -23,19 +21,19 @@ public class MakeCommentServiceImpl implements MakeCommentService {
 
     @Transactional
 	@Override
-	public void updateUpvote(UUID cid) {
+	public void updateUpvote(Long cid) {
 		makeCommentDao.updateUpvote(cid);
 	}
 
     @Transactional
 	@Override
-	public void updateDownvote(UUID cid) {
+	public void updateDownvote(Long  cid) {
 		makeCommentDao.updateDownvote(cid);
 	}
 
     @Transactional
 	@Override
-	public MakeComment findCommentById(UUID id) {
-		return makeCommentDao.findCommentById(id);
+	public MakeComment findCommentById(Long  cid) {
+		return makeCommentDao.findCommentById(cid);
 	}
 }

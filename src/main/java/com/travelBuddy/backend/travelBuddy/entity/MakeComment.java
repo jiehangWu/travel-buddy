@@ -1,41 +1,35 @@
 package com.travelBuddy.backend.travelBuddy.entity;
 
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class MakeComment {
+
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(
-        name = "uuid2",
-        strategy = "uuid2"
-    )
-    @Column(name = "cid", updatable = false, nullable = false, columnDefinition = "uuid")
-    private UUID cid;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, nullable = false)
+    private Long id;
 
     private String ccontent;
     private int upvote, downvote;
     private float longitude, latitude;
-    private UUID userid;
+    private Long userid;
 
     public MakeComment() {
         upvote = 0;
         downvote = 0;
     }
     
-    public UUID getId() {
-        return cid;
+    public Long getId() {
+        return id;
     }
 
-    public void setId(UUID cid) {
-        this.cid = cid;
+    public void setId(Long cid) {
+        this.id = cid;
     }
 
     public String getCcontent() {
@@ -86,11 +80,11 @@ public class MakeComment {
         this.latitude = latitude;
     }
 
-    public UUID getUserId() {
+    public Long getUserId() {
         return userid;
     }
 
-    public void setUserId(UUID userid) {
+    public void setUserId(Long userid) {
         this.userid = userid;
     }
 }
