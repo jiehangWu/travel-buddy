@@ -43,7 +43,7 @@ create table PublicArea(
 create table AppUser(
     id uuid,
     username varchar,
-    password varchar,
+    passsword varchar,
     displayName varchar,
     gender char(10),
     age integer,
@@ -56,7 +56,7 @@ create table AppUser(
 
 create table MakeComment(
     cid uuid,
-    content varchar,
+    ccontent varchar,
     upvote integer,
     downvote integer,
     longitude decimal not null,
@@ -64,7 +64,7 @@ create table MakeComment(
     userId uuid not null,
     primary key (cid),
     foreign key (longitude, latitude) references Geolocation(longitude, latitude) on delete no action,
-    foreign key (userId) references User on delete no action
+    foreign key (userId) references AppUser on delete no action
 );
 
 create table Suggestion(
@@ -74,7 +74,7 @@ create table Suggestion(
     primary key (id)
 );
 
-crate table GiveSuggestion(
+create table GiveSuggestion(
     userId uuid,
     suggestionId uuid,
     primary key (userId, suggesionId),

@@ -1,14 +1,31 @@
 package com.travelBuddy.backend.travelBuddy.entity;
 
+import java.util.UUID;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
 public class CovidCase {
-    private String id;
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+        name = "UUID",
+        strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
     private float longitude;
     private float latitude;
     private String caseType;
     private int count;
 
     // getters
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -29,7 +46,7 @@ public class CovidCase {
     }
 
     // setters
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
