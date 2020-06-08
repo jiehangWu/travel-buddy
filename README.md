@@ -18,7 +18,7 @@ Show the number of all covid cases based on geolocaiton.<br>
 ## Show Covid Cases by Type
 Show the number of covic cases by type.<br>
 **URL:**
-/covidcaselist/casetype/:casetype <br>
+/covidcaselist/case?type=:type <br>
 **Method:**
 `GET`
 
@@ -32,21 +32,21 @@ Create new comment.<br>
 
 ## Upvote Comment
 **URL:**
-/upvote <br>
+/upvote?id=:id <br>
 **Method:**
 `PUT`
 
 
 ## Downvote Comment
 **URL:**
-/downvote <br>
+/downvote?id=:id <br>
 **Method:**
 `PUT`
 
 
 ## Get Comment by ID
 **URL:**
-/comment/:id <br>
+/comment?id=:id <br>
 **Method:**
 `GET`
 
