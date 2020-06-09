@@ -44,20 +44,12 @@ public class MakeComment {
         return upvote;
     }
 
-    public void updateUpvote() {
-        upvote += 1;
-    }
-
     public void setUpvote(int upvote) {
         this.upvote = upvote;
     }
 
     public int getDownvote() {
         return downvote;
-    }
-
-    public void updateDownvote() {
-        downvote += 1;
     }
 
     public void setDownvote(int downvote) {

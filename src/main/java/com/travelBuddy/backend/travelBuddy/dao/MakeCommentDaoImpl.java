@@ -44,12 +44,10 @@ public class MakeCommentDaoImpl implements MakeCommentDao {
     @Override
     public void updateUpvote(Long id) {
         MakeComment mc = findCommentById(id);
-        mc.updateUpvote();
-        final String sql = "update MakeComment set upvote=:upvote where id=:id";
+        final String sql = "update MakeComment set upvote = upvote + 1 where id=:id";
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
-                                    .addValue("id", mc.getId())
-                                    .addValue("upvote", mc.getUpvote());
+                                    .addValue("id", mc.getId());
         
         template.update(sql, param, holder);
     }
@@ -57,12 +55,10 @@ public class MakeCommentDaoImpl implements MakeCommentDao {
     @Override
     public void updateDownvote(Long  id) {
         MakeComment mc = findCommentById(id);
-        mc.updateDownvote();
-        final String sql = "update MakeComment set downvote=:downvote where id=:id";
+        final String sql = "update MakeComment set downvote = downvote + 1 where id=:id";
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
-                                    .addValue("id", mc.getId())
-                                    .addValue("downvote", mc.getDownvote());
+                                    .addValue("id", mc.getId());
         
         template.update(sql, param, holder);
     }

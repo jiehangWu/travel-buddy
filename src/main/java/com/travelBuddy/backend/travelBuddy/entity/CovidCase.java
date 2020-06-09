@@ -12,14 +12,14 @@ public class CovidCase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
-    private int id;
+    private Long id;
     private float longitude;
     private float latitude;
     private String caseType;
     private int count;
 
     // getters
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -40,7 +40,7 @@ public class CovidCase {
     }
 
     // setters
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
