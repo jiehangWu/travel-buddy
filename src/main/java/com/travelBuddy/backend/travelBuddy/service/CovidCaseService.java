@@ -10,5 +10,7 @@ public interface CovidCaseService {
     List<CovidCase> findAndGroupCovidCases();
     
     List<CovidCase> findCovidCasesByCaseType(String caseType);
+
+    CovidCase findCovidCaseByLatAndLon(float lat, float lon);
 }
 

@@ -3,10 +3,11 @@ package com.travelBuddy.backend.travelBuddy.dao;
 import java.util.List;
 
 import com.travelBuddy.backend.travelBuddy.entity.CovidCase;
-// import com.travelBuddy.backend.travelBuddy.mapper.CovidCaseMapper;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -38,5 +39,19 @@ public class CovidCaseDaoImpl implements CovidCaseDao {
                         .toString();
         
         return template.query(sql, new BeanPropertyRowMapper(CovidCase.class));
+    }
+
+    @Override
+    public CovidCase findCovidCaseByLonAndLat(float lon, float lat) {
+        final String sql = new StringBuilder()
+                            .append("select count(*) from covidcase ")
+                            .append("where longitude = :lon and latitude = :lat ")
+                            .toString();
+        
+        SqlParameterSource param = new MapSqlParameterSource()
+                                    .addValue("lon", lon)
+                                    .addValue("lat", lat);
+
+        return (CovidCase)template.queryForObject(sql, param, new BeanPropertyRowMapper(CovidCase.class));
     }
 }

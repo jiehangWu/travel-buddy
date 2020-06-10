@@ -9,4 +9,6 @@ public interface CovidCaseDao {
     List<CovidCase> findAndGroupCovidCases(); 
 
     List<CovidCase> findCovidCasesByCaseType(String caseType);
+
+    CovidCase findCovidCaseByLonAndLat(float lon, float lat);
 }

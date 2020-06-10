@@ -7,6 +7,7 @@ import com.travelBuddy.backend.travelBuddy.service.CovidCaseService;
 import com.travelBuddy.backend.travelBuddy.service.MakeCommentService;
 import com.travelBuddy.backend.travelBuddy.service.PostcodeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -78,5 +79,11 @@ public class ApplicationController {
     public MakeComment getCommentById(@RequestParam(value = "id") String cid) {
         Long id = Long.parseLong(cid);
         return makeCommentService.findCommentById(id);
+    }
+
+    @RequestMapping(path = "/covidcase/{lat}/{lon}", method = RequestMethod.GET)
+    @ResponseBody
+    public CovidCase getCovidCaseByLatAndLon(@PathVariable float lat, @PathVariable float lon) {
+        return covidCaseService.findCovidCaseByLatAndLon(lat, lon);
     }
 }

@@ -24,5 +24,10 @@ public class CovidCaseServiceImpl implements CovidCaseService {
     public List<CovidCase> findCovidCasesByCaseType(String caseType) {
         return covidCaseDao.findCovidCasesByCaseType(caseType);
     }
+
+    @Transactional
+    public CovidCase findCovidCaseByLatAndLon(float lon, float lat) {
+        return covidCaseDao.findCovidCaseByLonAndLat(lon, lat);
+    }
 }
     
