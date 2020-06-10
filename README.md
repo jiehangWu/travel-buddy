@@ -22,6 +22,11 @@ Show the number of covic cases by type.<br>
 **Method:**
 `GET`
 
+## Get Covid Case by Longitude and Latitude
+**URL:**
+/covidcase/:lat/:lon <br>
+**Method:**
+`GET`
 
 ## Insert Comment
 Create new comment.<br>
