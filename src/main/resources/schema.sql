@@ -6,21 +6,19 @@ PRIMARY KEY (code)
 );
 
 create table Geolocation (
-    longitude decimal,
-    latitude decimal,
+    longitude varchar,
+    latitude varchar,
     streetNumber char(50),
     postcode char(10),
     primary key (longitude, latitude),
     foreign key (postcode) references  Postcode on delete no action
 );
 
-create type CovidCaseType as enum('suspected', 'confirmed', 'recovered', 'death');
-
 create table CovidCase(
     id serial,
-    longitude decimal,
-    latitude decimal,
-    caseType CovidCaseType,
+    longitude varchar,
+    latitude varchar,
+    caseType char(10),
     primary key (id)
 );
 
@@ -33,8 +31,8 @@ create table Contributor(
 
 create table PublicArea(
     id serial,
-    longitude decimal,
-    latitude decimal,
+    longitude varchar,
+    latitude varchar,
     name char(50),
     primary key (id),
     foreign key (longitude, latitude) references Geolocation (longitude, latitude) on delete no action
@@ -59,8 +57,8 @@ create table MakeComment(
     ccontent varchar,
     upvote serial,
     downvote serial,
-    longitude decimal not null,
-    latitude decimal not null,
+    longitude varchar not null,
+    latitude varchar not null,
     userId serial not null,
     primary key (id),
     foreign key (longitude, latitude) references Geolocation(longitude, latitude) on delete no action,
@@ -77,7 +75,7 @@ create table Suggestion(
 create table GiveSuggestion(
     userId serial,
     suggestionId serial,
-    primary key (userId, suggesionId),
+    primary key (userId, suggestionId),
     foreign key (userId) references AppUser on delete cascade,
     foreign key (suggestionId) references Suggestion on delete no action
 );
@@ -88,8 +86,6 @@ create table Producer(
     email varchar,
     primary key (name)
 );
-
-create type EquipmentType as enum ('Goggles', 'Mask', 'Gloves', 'Other');
 
 create table SafetyEquipment(
     id serial,

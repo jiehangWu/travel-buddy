@@ -1,8 +1,13 @@
 package com.travelBuddy.backend.travelBuddy.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import com.travelBuddy.backend.travelBuddy.entity.MakeComment;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -68,6 +73,20 @@ public class MakeCommentDaoImpl implements MakeCommentDao {
                                     .addValue("id", id);
         
         return (MakeComment) template.queryForObject(sql, param, new BeanPropertyRowMapper(MakeComment.class));
+    }
+
+    @Override
+    public void deleteCommentById(Long id) {
+        final String sql = "delete from makecomment where id = :id";
+        SqlParameterSource param = new MapSqlParameterSource()
+                                    .addValue("id", id);
+        
+        template.execute(sql, param, new PreparedStatementCallback<Object>() {
+            @Override
+            public Object doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
+                return ps.executeUpdate();
+            }
+        });
     }
     
 }

@@ -36,4 +36,9 @@ public class MakeCommentServiceImpl implements MakeCommentService {
 	public MakeComment findCommentById(Long  cid) {
 		return makeCommentDao.findCommentById(cid);
 	}
+
+	@Override
+	public void deleteCommentById(Long id) {
+		makeCommentDao.deleteCommentById(id);
+	}
 }

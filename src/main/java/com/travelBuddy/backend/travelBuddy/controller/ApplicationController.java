@@ -57,6 +57,24 @@ public class ApplicationController {
         return covidCaseService.findCovidCasesByCaseType(caseType);
     }
 
+    @RequestMapping(path = "/covidcaselist/{lat}/{lon}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<CovidCase> getCovidCaseByLatAndLon(@PathVariable String lat, @PathVariable String lon) {
+        return covidCaseService.findCovidCaseByLatAndLon(lat, lon);
+    }
+
+    @RequestMapping(path = "/covidcaselist/city/{lat}/{lon}", method = RequestMethod.GET)
+    @ResponseBody
+    public String getCityOfCovidCaseByLatAndLon(@PathVariable String lat, @PathVariable String lon) {
+        return covidCaseService.findCityOfCovidCaseByLatAndLon(lat, lon);
+    }
+
+    @RequestMapping(path = "/covidcaselist/total/{lat}/{lon}", method = RequestMethod.GET)
+    @ResponseBody
+    public int getTotalCovidCaseByLatAndLon(@PathVariable String lat, @PathVariable String lon) {
+        return covidCaseService.findTotalCovidCaseByLatAndLon(lat, lon);
+    }
+
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
     public void insertComment(@RequestBody MakeComment mc) {
         makeCommentService.insertComment(mc);
@@ -74,16 +92,16 @@ public class ApplicationController {
         makeCommentService.updateDownvote(id);
     }
 
-    @RequestMapping(value = "/comment", method = RequestMethod.GET)
+    @RequestMapping(path = "/comment/{cid}", method = RequestMethod.GET)
     @ResponseBody
-    public MakeComment getCommentById(@RequestParam(value = "id") String cid) {
+    public MakeComment getCommentById(@PathVariable String cid) {
         Long id = Long.parseLong(cid);
         return makeCommentService.findCommentById(id);
     }
 
-    @RequestMapping(path = "/covidcase/{lat}/{lon}", method = RequestMethod.GET)
+    @RequestMapping(path = "/comment/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public CovidCase getCovidCaseByLatAndLon(@PathVariable float lat, @PathVariable float lon) {
-        return covidCaseService.findCovidCaseByLatAndLon(lat, lon);
+    public void deleteCommentById(@PathVariable Long id) {
+        makeCommentService.deleteCommentById(id);
     }
 }

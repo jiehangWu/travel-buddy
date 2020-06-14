@@ -38,13 +38,13 @@ public class CovidCaseDaoImpl implements CovidCaseDao {
                         .append(" group by (longitude, latitude)")
                         .toString();
         
-        return template.query(sql, new BeanPropertyRowMapper(CovidCase.class));
+        return (List<CovidCase>)template.query(sql, new BeanPropertyRowMapper(CovidCase.class));
     }
 
     @Override
-    public CovidCase findCovidCaseByLonAndLat(float lon, float lat) {
+    public List<CovidCase> findCovidCaseByLatAndLon(String lat, String lon) {
         final String sql = new StringBuilder()
-                            .append("select count(*) from covidcase ")
+                            .append("select id from covidcase ")
                             .append("where longitude = :lon and latitude = :lat ")
                             .toString();
         
@@ -52,6 +52,41 @@ public class CovidCaseDaoImpl implements CovidCaseDao {
                                     .addValue("lon", lon)
                                     .addValue("lat", lat);
 
-        return (CovidCase)template.queryForObject(sql, param, new BeanPropertyRowMapper(CovidCase.class));
+        return template.query(sql, param, new BeanPropertyRowMapper(CovidCase.class));
     }
+
+    @Override
+    public String findCityOfCovidCaseByLatAndLon(String lat, String lon) {
+        final String sql = new StringBuilder()
+                            .append("select distinct city from postcode p, ")
+                            .append("geolocation g, covidcase c ")
+                            .append("where c.longitude = g.longitude ")
+                            .append("and c.latitude = g.latitude ")
+                            .append("and g.postcode = p.code ")
+                            .append("and c.longitude = :lon and ")
+                            .append("c.latitude = :lat")
+                            .toString();
+        
+        SqlParameterSource param = new MapSqlParameterSource()
+                                    .addValue("lon", lon)
+                                    .addValue("lat", lat);
+
+        return (String)template.queryForObject(sql, param, String.class);
+    }
+
+    @Override 
+    public int findTotalCovidCaseByLatAndLon(String lat, String lon) {
+        final String sql = new StringBuilder()
+                            .append("select count(*) from covidcase ")
+                            .append("where longitude = :lon and latitude = :lat ")
+                            .append("group by longitude, latitude")
+                            .toString();
+        
+        SqlParameterSource param = new MapSqlParameterSource()
+                                    .addValue("lon", lon)
+                                    .addValue("lat", lat);
+
+        return (int)template.queryForObject(sql, param, Integer.class);
+    }
+
 }

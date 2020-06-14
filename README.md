@@ -22,9 +22,21 @@ Show the number of covic cases by type.<br>
 **Method:**
 `GET`
 
+## Find City by Longgitude and Latitude
+**URL:**
+/covidcaselist/city/:lat/:lon <br>
+**Method:**
+`GET`
+
 ## Get Covid Case by Longitude and Latitude
 **URL:**
-/covidcase/:lat/:lon <br>
+/covidcaselist/:lat/:lon <br>
+**Method:**
+`GET`
+
+## Get Total of Covid Case by Longitude and Latitude
+**URL:**
+/covidcaselist/total/:lat/:lon <br>
 **Method:**
 `GET`
 
@@ -41,13 +53,17 @@ Create new comment.<br>
 **Method:**
 `PUT`
 
-
 ## Downvote Comment
 **URL:**
 /downvote?id=:id <br>
 **Method:**
 `PUT`
 
+## Delete Comment
+**URL:**
+/comment/:id <br>
+**Method:**
+`DELETE`
 
 ## Get Comment by ID
 **URL:**

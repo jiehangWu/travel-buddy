@@ -26,8 +26,20 @@ public class CovidCaseServiceImpl implements CovidCaseService {
     }
 
     @Transactional
-    public CovidCase findCovidCaseByLatAndLon(float lon, float lat) {
-        return covidCaseDao.findCovidCaseByLonAndLat(lon, lat);
+    public List<CovidCase> findCovidCaseByLatAndLon(String lat, String lon) {
+        return covidCaseDao.findCovidCaseByLatAndLon(lat, lon);
+    }
+
+    @Transactional
+    @Override
+    public String findCityOfCovidCaseByLatAndLon(String lat, String lon) {
+        return covidCaseDao.findCityOfCovidCaseByLatAndLon(lat, lon);
+    }
+
+    @Transactional
+    @Override
+    public int findTotalCovidCaseByLatAndLon(String lat, String lon) {
+        return covidCaseDao.findTotalCovidCaseByLatAndLon(lat, lon);
     }
 }
     

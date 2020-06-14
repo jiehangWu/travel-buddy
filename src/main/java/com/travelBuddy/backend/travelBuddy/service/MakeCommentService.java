@@ -13,4 +13,6 @@ public interface MakeCommentService {
     void updateDownvote(Long  cid);
 
     MakeComment findCommentById(Long  cid);
+
+    void deleteCommentById(Long id);
 }

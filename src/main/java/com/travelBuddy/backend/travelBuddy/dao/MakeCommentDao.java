@@ -10,4 +10,6 @@ public interface MakeCommentDao {
     void updateDownvote(Long cid);
 
     MakeComment findCommentById(Long cid);
+
+    void deleteCommentById(Long cid);
 }

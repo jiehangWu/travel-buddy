@@ -10,5 +10,9 @@ public interface CovidCaseDao {
 
     List<CovidCase> findCovidCasesByCaseType(String caseType);
 
-    CovidCase findCovidCaseByLonAndLat(float lon, float lat);
+    List<CovidCase> findCovidCaseByLatAndLon(String lat, String lon);
+
+    String findCityOfCovidCaseByLatAndLon(String lat, String lon);
+
+    int findTotalCovidCaseByLatAndLon(String lat, String lon);
 }
