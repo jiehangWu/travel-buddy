@@ -93,6 +93,12 @@ public class ApplicationController {
         return covidCaseService.findTotalCovidCaseByLatAndLon(lat, lon);
     }
 
+    @RequestMapping(value = "/comments", method = RequestMethod.GET)
+    @ResponseBody
+    public List<MakeComment> getAllComments() {
+        return makeCommentService.findAllComments();
+    }
+
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
     public void insertComment(@RequestBody MakeComment mc) {
         makeCommentService.insertComment(mc);
@@ -125,8 +131,8 @@ public class ApplicationController {
 
     @RequestMapping(path = "/users/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public AppUser getAppUserById(@PathVariable int id) {
-        return appUserService.findAppUserById(id);
+    public AppUser getAppUserById(@PathVariable Long id) {
+        return makeCommentService.findAppUserByUserId(id);
     }
 
     @RequestMapping(path = "/locations", method = RequestMethod.GET)

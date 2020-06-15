@@ -2,7 +2,9 @@ package com.travelBuddy.backend.travelBuddy.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
+import com.travelBuddy.backend.travelBuddy.entity.AppUser;
 import com.travelBuddy.backend.travelBuddy.entity.MakeComment;
 
 import org.springframework.dao.DataAccessException;
@@ -88,5 +90,19 @@ public class MakeCommentDaoImpl implements MakeCommentDao {
             }
         });
     }
-    
+
+    @Override
+    public List<MakeComment> findAllComments() {
+        final String sql = "select * from  makecomment";
+        return (List<MakeComment>)template.query(sql, new BeanPropertyRowMapper(MakeComment.class));
+    }
+
+    @Override
+    public AppUser findAppUserByUserId(Long id) {
+        final String sql = "select distinct u.username from AppUser u, makecomment m where m.userid = u.id and m.userid = :id";
+        SqlParameterSource param = new MapSqlParameterSource()
+                                    .addValue("id", id);
+
+        return (AppUser)template.queryForObject(sql, param, new BeanPropertyRowMapper(AppUser.class));
+    }           
 }

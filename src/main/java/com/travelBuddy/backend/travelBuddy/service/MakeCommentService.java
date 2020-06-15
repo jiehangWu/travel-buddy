@@ -1,5 +1,8 @@
 package com.travelBuddy.backend.travelBuddy.service;
 
+import java.util.List;
+
+import com.travelBuddy.backend.travelBuddy.entity.AppUser;
 import com.travelBuddy.backend.travelBuddy.entity.MakeComment;
 
 import org.springframework.stereotype.Service;
@@ -15,4 +18,8 @@ public interface MakeCommentService {
     MakeComment findCommentById(Long  cid);
 
     void deleteCommentById(Long id);
+
+    List<MakeComment> findAllComments(); 
+
+    AppUser findAppUserByUserId(Long id);
 }
