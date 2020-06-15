@@ -1,12 +1,17 @@
 package com.travelBuddy.backend.travelBuddy.controller;
 
 import com.travelBuddy.backend.travelBuddy.entity.CovidCase;
+import com.travelBuddy.backend.travelBuddy.entity.Geolocation;
 import com.travelBuddy.backend.travelBuddy.entity.MakeComment;
 import com.travelBuddy.backend.travelBuddy.entity.Postcode;
+import com.travelBuddy.backend.travelBuddy.entity.AppUser;
+import com.travelBuddy.backend.travelBuddy.service.AppUserService;
 import com.travelBuddy.backend.travelBuddy.service.CovidCaseService;
 import com.travelBuddy.backend.travelBuddy.service.MakeCommentService;
 import com.travelBuddy.backend.travelBuddy.service.PostcodeService;
+import com.travelBuddy.backend.travelBuddy.service.GeolocationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +22,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/")
 public class ApplicationController {
     private PostcodeService postcodeService;
     private CovidCaseService covidCaseService;
     private MakeCommentService makeCommentService;
+    private AppUserService appUserService;
+    private GeolocationService geolocationService;
 
     @Autowired
     public void setPostcodeService(PostcodeService postcodeService) {
@@ -37,6 +45,16 @@ public class ApplicationController {
     @Autowired
     public void setMakeCommentService(MakeCommentService makeCommentService) {
         this.makeCommentService = makeCommentService;
+    }
+
+    @Autowired
+    public void setAppUserService(AppUserService appUserService) {
+        this.appUserService = appUserService;
+    }
+
+    @Autowired
+    public void setGeolocationService(GeolocationService geolocationService) {
+        this.geolocationService = geolocationService;
     }
 
     @RequestMapping(value = "/postcodelist", method = RequestMethod.GET)
@@ -103,5 +121,17 @@ public class ApplicationController {
     @ResponseBody
     public void deleteCommentById(@PathVariable Long id) {
         makeCommentService.deleteCommentById(id);
+    }
+
+    @RequestMapping(path = "/users/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public AppUser getAppUserById(@PathVariable int id) {
+        return appUserService.findAppUserById(id);
+    }
+
+    @RequestMapping(path = "/locations", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Geolocation> getAllLocations() {
+        return geolocationService.findAllGeolocation();
     }
 }

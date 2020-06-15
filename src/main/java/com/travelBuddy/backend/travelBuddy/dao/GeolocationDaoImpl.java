@@ -1,22 +1,28 @@
-// package com.travelBuddy.backend.travelBuddy.dao;
+package com.travelBuddy.backend.travelBuddy.dao;
 
-// import com.travelBuddy.backend.travelBuddy.entity.Geolocation;
+import java.util.List;
 
-// import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-// import org.springframework.stereotype.Repository;
+import com.travelBuddy.backend.travelBuddy.entity.Geolocation;
 
-// @Repository
-// public class GeolocationDaoImpl implements GeolocationDao {
-//     private NamedParameterJdbcTemplate template;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
 
-//     public GeolocationDaoImpl(NamedParameterJdbcTemplate template) {
-//         this.template = template;
-//     }
+@Repository
+public class GeolocationDaoImpl implements GeolocationDao {
+    private NamedParameterJdbcTemplate template;
 
-//     @Override
-//     public Geolocation findGeolocationByLonAndLat(float lon, float lat) {
-//         final String sql = 
-        
-//     }
+    public GeolocationDaoImpl(NamedParameterJdbcTemplate template) {
+        this.template = template;
+    }
+
+    @Override
+    public List<Geolocation> findAllGeolocation() {
+        final String sql = "select longitude, latitude from geolocation";
+
+        return template.query(sql, new BeanPropertyRowMapper(Geolocation.class));
+    }
+
     
-// }
+    
+}

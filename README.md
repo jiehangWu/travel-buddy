@@ -67,7 +67,7 @@ Create new comment.<br>
 
 ## Get Comment by ID
 **URL:**
-/comment?id=:id <br>
+/comment/:id <br>
 **Method:**
 `GET`
 

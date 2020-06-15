@@ -1,8 +1,10 @@
 package com.travelBuddy.backend.travelBuddy.dao;
 
+import java.util.List;
+
 import com.travelBuddy.backend.travelBuddy.entity.Geolocation;
 
 public interface GeolocationDao {
     
-    Geolocation findGeolocationByLonAndLat(float lon, float lat);
+    List<Geolocation> findAllGeolocation();
 }
