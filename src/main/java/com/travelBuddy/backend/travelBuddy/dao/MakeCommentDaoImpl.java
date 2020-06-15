@@ -49,7 +49,7 @@ public class MakeCommentDaoImpl implements MakeCommentDao {
     }
 
     @Override
-    public void updateUpvote(Long id) {
+    public void updateUpvote(int id) {
         final String sql = "update MakeComment set upvote = upvote + 1 where id=:id";
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
@@ -59,7 +59,7 @@ public class MakeCommentDaoImpl implements MakeCommentDao {
     }
 
     @Override
-    public void updateDownvote(Long  id) {
+    public void updateDownvote(int id) {
         final String sql = "update MakeComment set downvote = downvote + 1 where id=:id";
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource param = new MapSqlParameterSource()
@@ -78,7 +78,7 @@ public class MakeCommentDaoImpl implements MakeCommentDao {
     }
 
     @Override
-    public void deleteCommentById(Long id) {
+    public void deleteCommentById(int id) {
         final String sql = "delete from makecomment where id = :id";
         SqlParameterSource param = new MapSqlParameterSource()
                                     .addValue("id", id);
@@ -98,11 +98,25 @@ public class MakeCommentDaoImpl implements MakeCommentDao {
     }
 
     @Override
-    public AppUser findAppUserByUserId(Long id) {
+    public AppUser findAppUserByUserId(int id) {
         final String sql = "select distinct u.username from AppUser u, makecomment m where m.userid = u.id and m.userid = :id";
         SqlParameterSource param = new MapSqlParameterSource()
                                     .addValue("id", id);
 
         return (AppUser)template.queryForObject(sql, param, new BeanPropertyRowMapper(AppUser.class));
-    }           
+    }     
+    
+    public int findUpvoteById(int id) {
+        final String sql = "select upvote from makecomment where id=:id";
+        SqlParameterSource param = new MapSqlParameterSource()
+                                    .addValue("id", id);
+        return (int)template.queryForObject(sql, param, Integer.class);
+    }
+
+    public int findDownvoteById(int id) {
+        final String sql = "select downvote from makecomment where id=:id";
+        SqlParameterSource param = new MapSqlParameterSource()
+                                    .addValue("id", id);
+        return (int)template.queryForObject(sql, param, Integer.class);
+    }
 }

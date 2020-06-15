@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.nio.IntBuffer;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -104,15 +105,13 @@ public class ApplicationController {
         makeCommentService.insertComment(mc);
     }
 
-    @RequestMapping(value = "/upvote", method = RequestMethod.PUT)
-    public void updateUpvote(@RequestParam(value = "id") String cid) {
-        Long id = Long.parseLong(cid);
+    @RequestMapping(value = "/upvote/{id}", method = RequestMethod.PUT)
+    public void updateUpvote(@PathVariable int id) {
         makeCommentService.updateUpvote(id);
     }
 
-    @RequestMapping(value = "/downvote", method = RequestMethod.PUT)
-    public void updateDownvote(@RequestParam(value = "id") String cid) {
-        Long id = Long.parseLong(cid);
+    @RequestMapping(value = "/downvote/{id}", method = RequestMethod.PUT)
+    public void updateDownvote(@PathVariable int id) {
         makeCommentService.updateDownvote(id);
     }
 
@@ -125,14 +124,26 @@ public class ApplicationController {
 
     @RequestMapping(path = "/comment/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public void deleteCommentById(@PathVariable Long id) {
+    public void deleteCommentById(@PathVariable int id) {
         makeCommentService.deleteCommentById(id);
     }
 
     @RequestMapping(path = "/users/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public AppUser getAppUserById(@PathVariable Long id) {
-        return makeCommentService.findAppUserByUserId(id);
+    public AppUser getAppUserById(@PathVariable int id) {
+        return appUserService.findAppUserById(id);
+    }
+
+    @RequestMapping(value = "/upvote/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public int getUpvoteById(@PathVariable int id) {
+        return makeCommentService.findUpvoteById(id);
+    }
+
+    @RequestMapping(value = "/downvote/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public int getDownvoteById(@PathVariable int id) {
+        return makeCommentService.findDownvoteById(id);
     }
 
     @RequestMapping(path = "/locations", method = RequestMethod.GET)

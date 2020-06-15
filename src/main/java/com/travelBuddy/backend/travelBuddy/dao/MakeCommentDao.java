@@ -8,15 +8,19 @@ import com.travelBuddy.backend.travelBuddy.entity.MakeComment;
 public interface MakeCommentDao {
     void insertComment(MakeComment mc); 
 
-    void updateUpvote(Long cid);
+    void updateUpvote(int cid);
 
-    void updateDownvote(Long cid);
+    void updateDownvote(int cid);
 
     MakeComment findCommentById(Long cid);
 
-    void deleteCommentById(Long cid);
+    void deleteCommentById(int cid);
 
     List<MakeComment> findAllComments();
 
-    AppUser findAppUserByUserId(Long id);
+    AppUser findAppUserByUserId(int id);
+
+    int findUpvoteById(int id);
+
+    int findDownvoteById(int id);
 }

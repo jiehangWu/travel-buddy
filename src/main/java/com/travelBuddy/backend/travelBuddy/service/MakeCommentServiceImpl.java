@@ -24,13 +24,13 @@ public class MakeCommentServiceImpl implements MakeCommentService {
 
     @Transactional
 	@Override
-	public void updateUpvote(Long cid) {
+	public void updateUpvote(int cid) {
 		makeCommentDao.updateUpvote(cid);
 	}
 
     @Transactional
 	@Override
-	public void updateDownvote(Long  cid) {
+	public void updateDownvote(int  cid) {
 		makeCommentDao.updateDownvote(cid);
 	}
 
@@ -41,7 +41,7 @@ public class MakeCommentServiceImpl implements MakeCommentService {
 	}
 
 	@Override
-	public void deleteCommentById(Long id) {
+	public void deleteCommentById(int id) {
 		makeCommentDao.deleteCommentById(id);
 	}
 
@@ -51,7 +51,17 @@ public class MakeCommentServiceImpl implements MakeCommentService {
 	}
 
 	@Override
-	public AppUser findAppUserByUserId(Long id) {
+	public AppUser findAppUserByUserId(int id) {
 		return makeCommentDao.findAppUserByUserId(id);
+	}
+
+	@Override
+	public int findUpvoteById(int id) {
+		return makeCommentDao.findUpvoteById(id);
+	}
+
+	@Override
+	public int findDownvoteById(int id) {
+		return makeCommentDao.findDownvoteById(id);
 	}
 }
