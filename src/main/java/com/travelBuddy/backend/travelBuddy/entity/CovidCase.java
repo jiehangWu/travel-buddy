@@ -13,8 +13,8 @@ public class CovidCase {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
-    private float longitude;
-    private float latitude;
+    private String longitude;
+    private String latitude;
     private String caseType;
     private int count;
 
@@ -23,11 +23,11 @@ public class CovidCase {
         return id;
     }
 
-    public float getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public float getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
@@ -44,11 +44,11 @@ public class CovidCase {
         this.id = id;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public void setLatitude(float latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
