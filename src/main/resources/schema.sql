@@ -89,7 +89,7 @@ create table Producer(
 
 create table SafetyEquipment(
     id serial,
-    type EquipmentType,
+    type char(20),
     typeId serial,
     producerName char(50),
     description varchar,
