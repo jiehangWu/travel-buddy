@@ -89,4 +89,23 @@ public class CovidCaseDaoImpl implements CovidCaseDao {
         return (int)template.queryForObject(sql, param, Integer.class);
     }
 
+    @Override
+    public List<CovidCase> findCovidByLatLngRange1(String lat, String lon) {
+        final String sql = new StringBuilder()
+                        .append("select latitude, longitude, count(*)")
+                        .append(" from covidcase")
+                        .append(" where latitude between :latdown and :latup")
+                        .append(" and longitude between :londown and :lonup")
+                        .append(" group by latitude, longitude")
+                        .toString();
+        
+        SqlParameterSource param = new MapSqlParameterSource()
+                        .addValue("latup", Double.parseDouble(lat)+1)
+                        .addValue("latdown", Double.parseDouble(lon)-1)
+                        .addValue("lonup", Double.parseDouble(lon)+1)
+                        .addValue("londown", Double.parseDouble(lon)-1);
+
+        return template.query(sql, param, new BeanPropertyRowMapper(CovidCase.class));
+    }
+
 }

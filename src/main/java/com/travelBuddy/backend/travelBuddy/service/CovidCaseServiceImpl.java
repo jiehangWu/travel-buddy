@@ -41,5 +41,10 @@ public class CovidCaseServiceImpl implements CovidCaseService {
     public int findTotalCovidCaseByLatAndLon(String lat, String lon) {
         return covidCaseDao.findTotalCovidCaseByLatAndLon(lat, lon);
     }
+
+    @Transactional
+    public List<CovidCase> findCovidCaseByLatAndLonRange(String lat, String lon) {
+        return covidCaseDao.findCovidByLatLngRange1(lat, lon);
+    }
 }
     
