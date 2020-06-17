@@ -134,6 +134,12 @@ public class ApplicationController {
         makeCommentService.deleteCommentById(id);
     }
 
+    @RequestMapping(path = "/users/{email}/{password}", method = RequestMethod.GET)
+    @ResponseBody
+    public AppUser getAppUserByEmailAndPassword(@PathVariable String email, @PathVariable String password) {
+        return appUserService.findAppUserByEmailPassword(email, password);
+    }
+
     @RequestMapping(path = "/users/{id}", method = RequestMethod.GET)
     @ResponseBody
     public AppUser getAppUserById(@PathVariable int id) {
