@@ -16,7 +16,7 @@ public class MakeComment {
 
     private String ccontent;
     private int upvote, downvote;
-    private String longitude, latitude;
+    private float latitude, longitude;
     private Long userid;
 
     public MakeComment() {

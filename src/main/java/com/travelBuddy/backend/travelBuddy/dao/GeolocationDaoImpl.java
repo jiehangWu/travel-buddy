@@ -18,7 +18,7 @@ public class GeolocationDaoImpl implements GeolocationDao {
 
     @Override
     public List<Geolocation> findAllGeolocation() {
-        final String sql = "select longitude, latitude from geolocation";
+        final String sql = "select latitude, longitude from geolocation";
 
         return template.query(sql, new BeanPropertyRowMapper(Geolocation.class));
     }
