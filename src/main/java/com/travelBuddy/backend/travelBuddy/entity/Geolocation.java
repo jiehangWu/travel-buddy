@@ -1,23 +1,23 @@
 package com.travelBuddy.backend.travelBuddy.entity;
 
 public class Geolocation {
-    private float latitude, longitude;
+    private double latitude, longitude;
     private String streetNumber;
     private String postcode;
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String lon) {
+    public void setLongitude(double lon) {
         longitude = lon;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String lat) {
+    public void setLatitude(double lat) {
         latitude = lat;
     }
 

@@ -16,7 +16,7 @@ public class MakeComment {
 
     private String ccontent;
     private int upvote, downvote;
-    private float latitude, longitude;
+    private double latitude, longitude;
     private Long userid;
 
     public MakeComment() {
@@ -56,19 +56,19 @@ public class MakeComment {
         this.downvote = downvote;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(String longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(float latitude) {
         this.latitude = latitude;
     }
 

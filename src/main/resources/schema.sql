@@ -6,8 +6,8 @@ CREATE TABLE Postcode (
 );
 
 create table Geolocation (
-    longitude float,
-    latitude float,
+    longitude NUMERIC(7, 4),
+    latitude NUMERIC(7, 4),
     streetNumber char(50),
     postcode char(10),
     primary key (latitude, longitude),
@@ -16,8 +16,8 @@ create table Geolocation (
 
 create table CovidCase(
     id serial,
-    longitude float,
-    latitude float,
+    longitude NUMERIC(7, 4),
+    latitude NUMERIC(7, 4),
     caseType char(10),
     primary key (id)
 );
@@ -31,8 +31,8 @@ create table Contributor(
 
 create table PublicArea(
     id serial,
-    longitude float,
-    latitude float,
+    longitude NUMERIC(7, 4),
+    latitude NUMERIC(7, 4),
     name char(50),
     primary key (id),
     foreign key (latitude, longitude) references Geolocation (latitude, longitude) on delete no action
@@ -57,8 +57,8 @@ create table MakeComment(
     ccontent varchar,
     upvote serial,
     downvote serial,
-    longitude float not null,
-    latitude float not null,
+    longitude NUMERIC(7, 4) not null,
+    latitude NUMERIC(7, 4) not null,
     userId serial not null,
     primary key (id),
     foreign key (latitude, longitude) references Geolocation(latitude, longitude) on delete no action,
