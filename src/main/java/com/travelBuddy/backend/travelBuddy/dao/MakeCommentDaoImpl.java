@@ -119,4 +119,20 @@ public class MakeCommentDaoImpl implements MakeCommentDao {
                                     .addValue("id", id);
         return (int)template.queryForObject(sql, param, Integer.class);
     }
+
+    @Override
+    public List<MakeComment> findComments(String lat, String lng) {
+        final String sql = new StringBuilder()
+                        .append("select *")
+                        .append(" from makecomment")
+                        .append(" where latitude = :lat")
+                        .append(" and longitude = :lng")
+                        .toString();
+        
+        SqlParameterSource param = new MapSqlParameterSource()
+                        .addValue("lat", Double.parseDouble(lat))
+                        .addValue("lng", Double.parseDouble(lng));
+
+        return template.query(sql, param, new BeanPropertyRowMapper(MakeComment.class));
+    }
 }

@@ -64,4 +64,9 @@ public class MakeCommentServiceImpl implements MakeCommentService {
 	public int findDownvoteById(int id) {
 		return makeCommentDao.findDownvoteById(id);
 	}
+
+	@Override
+	public List<MakeComment> findComments(String lat, String lng) {
+		return makeCommentDao.findComments(lat, lng);
+	}
 }

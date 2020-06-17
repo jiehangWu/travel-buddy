@@ -106,6 +106,12 @@ public class ApplicationController {
         return makeCommentService.findAllComments();
     }
 
+    @RequestMapping(value = "/comments/{lat}/{lon}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<MakeComment> getComments(@PathVariable String lat, @PathVariable String lon) {
+        return makeCommentService.findComments(lat, lon);
+    }
+
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
     public void insertComment(@RequestBody MakeComment mc) {
         makeCommentService.insertComment(mc);

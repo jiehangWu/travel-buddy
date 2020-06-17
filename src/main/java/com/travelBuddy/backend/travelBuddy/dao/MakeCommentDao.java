@@ -18,6 +18,8 @@ public interface MakeCommentDao {
 
     List<MakeComment> findAllComments();
 
+    List<MakeComment> findComments(String lat, String lng);
+
     AppUser findAppUserByUserId(int id);
 
     int findUpvoteById(int id);
