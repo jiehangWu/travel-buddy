@@ -31,7 +31,7 @@ public class MakeCommentDaoImpl implements MakeCommentDao {
         final String sql = new StringBuilder()
                             .append("insert into MakeComment")
                             .append("(ccontent, upvote, downvote, ")
-                            .append("longitude, latitude, userid) ")
+                            .append("latitude, longitude, userid) ")
                             .append("values")
                             .append("(:ccontent, :upvote, :downvote, ")
                             .append(":longitude, :latitude, :userid)")

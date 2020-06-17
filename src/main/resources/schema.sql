@@ -10,7 +10,7 @@ create table Geolocation (
     latitude varchar,
     streetNumber char(50),
     postcode char(10),
-    primary key (longitude, latitude),
+    primary key (latitude, longitude),
     foreign key (postcode) references  Postcode on delete no action
 );
 
@@ -35,7 +35,7 @@ create table PublicArea(
     latitude varchar,
     name char(50),
     primary key (id),
-    foreign key (longitude, latitude) references Geolocation (longitude, latitude) on delete no action
+    foreign key (latitude, longitude) references Geolocation (latitude, longitude) on delete no action
 );
 
 create table AppUser(
@@ -61,7 +61,7 @@ create table MakeComment(
     latitude varchar not null,
     userId serial not null,
     primary key (id),
-    foreign key (longitude, latitude) references Geolocation(longitude, latitude) on delete no action,
+    foreign key (latitude, longitude) references Geolocation(latitude, longitude) on delete no action,
     foreign key (userId) references AppUser on delete no action
 );
 

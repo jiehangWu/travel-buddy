@@ -22,8 +22,8 @@ public class CovidCaseDaoImpl implements CovidCaseDao {
     @Override
     public List<CovidCase> findAndGroupCovidCases() {
         final String sql = new StringBuilder()
-                        .append("select longitude, latitude, count(*)")
-                        .append(" from covidcase group by (longitude, latitude)")
+                        .append("select latitude, longitude, count(*)")
+                        .append(" from covidcase group by (latitude, longitude)")
                         .toString();
 
         return template.query(sql, new BeanPropertyRowMapper(CovidCase.class));
@@ -32,10 +32,10 @@ public class CovidCaseDaoImpl implements CovidCaseDao {
     @Override
     public List<CovidCase> findCovidCasesByCaseType(String caseType) {
         final String sql = new StringBuilder()
-                        .append("select longitude, latitude, count(*)")
+                        .append("select latitude, longitude, count(*)")
                         .append("from covidcase where casetype = ")
                         .append("'" + caseType + "'")
-                        .append(" group by (longitude, latitude)")
+                        .append(" group by (latitude, longitude)")
                         .toString();
         
         return (List<CovidCase>)template.query(sql, new BeanPropertyRowMapper(CovidCase.class));
@@ -79,7 +79,7 @@ public class CovidCaseDaoImpl implements CovidCaseDao {
         final String sql = new StringBuilder()
                             .append("select count(*) from covidcase ")
                             .append("where longitude = :lon and latitude = :lat ")
-                            .append("group by longitude, latitude")
+                            .append("group by latitude, longitude")
                             .toString();
         
         SqlParameterSource param = new MapSqlParameterSource()

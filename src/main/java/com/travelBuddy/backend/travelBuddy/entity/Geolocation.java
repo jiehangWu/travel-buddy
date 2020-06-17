@@ -1,8 +1,7 @@
 package com.travelBuddy.backend.travelBuddy.entity;
 
 public class Geolocation {
-    
-    private float longitude, latitude;
+    private String latitude, longitude;
     private String streetNumber;
     private String postcode;
 
