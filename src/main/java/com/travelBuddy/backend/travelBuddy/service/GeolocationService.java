@@ -5,4 +5,6 @@ import java.util.List;
 
 public interface GeolocationService {
     List<Geolocation> findAllGeolocation();
+
+    List<String> findEquipmentsByLocation(double lat, double lon);
 }

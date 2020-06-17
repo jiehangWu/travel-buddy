@@ -157,4 +157,10 @@ public class ApplicationController {
     public List<Geolocation> getAllLocations() {
         return geolocationService.findAllGeolocation();
     }
+
+    @RequestMapping(path = "equipments/{lat}/{lon}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<String> getEquipmentsByLocation(@PathVariable double lat, @PathVariable double lon) {
+        return geolocationService.findEquipmentsByLocation(lat, lon);
+    }
 }

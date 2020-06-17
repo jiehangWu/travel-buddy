@@ -90,29 +90,10 @@ create table Producer(
 create table SafetyEquipment(
     id serial,
     type char(20),
-    typeId serial,
     producerName char(50),
     description varchar,
     primary key (id),
     foreign key (producerName) references Producer on delete no action
-);
-
-create table Goggles(
-    id serial,
-    type char(20),
-    primary key (id)
-);
-
-create table Mask(
-    id serial,
-    medicalGrade char(20),
-    primary key (id)
-);
-
-create table Gloves(
-    id serial,
-    material char(20),
-    primary key (id)
 );
 
 create table ProvideEquipment(

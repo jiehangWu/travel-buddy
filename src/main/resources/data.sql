@@ -113,4 +113,82 @@ insert into publicarea(id, latitude, longitude, name) values(10, '49.2585', '-12
 insert into makecomment(id, ccontent, upvote, downvote, latitude, longitude, userid) values(1, 'hello', 0, 0, '49.2649', '-123.2034', 4);
 insert into makecomment(id, ccontent, upvote, downvote, latitude, longitude, userid) values(2, 'hello', 0, 0, '49.2649', '-123.2034', 1);
 
+insert into suggestion(id, content, timestamp) values(1, 'Do not go out!', '2020-6-19 10:23:54');
+insert into suggestion(id, content, timestamp) values(2, 'Keep social distancing!', '2020-6-19 10:23:54');
+insert into suggestion(id, content, timestamp) values(3, 'Stay at home!', '2020-6-19 10:23:54');
+insert into suggestion(id, content, timestamp) values(4, 'Be safe!', '2020-6-19 10:23:54');
+insert into suggestion(id, content, timestamp) values(5, 'No gathering!', '2020-6-19 10:23:54');
+insert into suggestion(id, content, timestamp) values(6, 'Do not go out!', '2020-6-19 10:23:54');
+insert into suggestion(id, content, timestamp) values(7, 'Do not go out!', '2020-6-19 10:23:54');
+insert into suggestion(id, content, timestamp) values(8, 'Do not go out!', '2020-6-19 10:23:54');
+insert into suggestion(id, content, timestamp) values(9, 'Do not go out!', '2020-6-19 10:23:54');
+insert into suggestion(id, content, timestamp) values(10, 'Do not go out!', '2020-6-19 10:23:54');
+
+insert into givesuggestion(userId, suggestionId) values(1, 1);
+insert into givesuggestion(userId, suggestionId) values(1, 2);
+insert into givesuggestion(userId, suggestionId) values(1, 3);
+insert into givesuggestion(userId, suggestionId) values(1, 4);
+insert into givesuggestion(userId, suggestionId) values(1, 5);
+insert into givesuggestion(userId, suggestionId) values(1, 6);
+insert into givesuggestion(userId, suggestionId) values(1, 7);
+insert into givesuggestion(userId, suggestionId) values(1, 8);
+insert into givesuggestion(userId, suggestionId) values(1, 9);
+insert into givesuggestion(userId, suggestionId) values(1, 10);
+
+insert into producer(name, phone, email) values('Nike', '778-xxx-xxxx', 'xxx@gmail.com');
+insert into producer(name, phone, email) values('Adidas', '778-xxx-xxxx', 'xxx@gmail.com');
+insert into producer(name, phone, email) values('Sony', '778-xxx-xxxx', 'xxx@gmail.com');
+insert into producer(name, phone, email) values('Nikon', '778-xxx-xxxx', 'xxx@gmail.com');
+insert into producer(name, phone, email) values('Fuji', '778-xxx-xxxx', 'xxx@gmail.com');
+insert into producer(name, phone, email) values('Converse', '778-xxx-xxxx', 'xxx@gmail.com');
+insert into producer(name, phone, email) values('Vans', '778-xxx-xxxx', 'xxx@gmail.com');
+insert into producer(name, phone, email) values('Gucci', '778-xxx-xxxx', 'xxx@gmail.com');
+insert into producer(name, phone, email) values('Amarni', '778-xxx-xxxx', 'xxx@gmail.com');
+insert into producer(name, phone, email) values('Prada', '778-xxx-xxxx', 'xxx@gmail.com');
+insert into producer(name, phone, email) values('3M', '778-xxx-xxxx', 'xxx@gmail.com');
+
+insert into safetyequipment(id, type, producername, description) values(1, 'shoes', 'Nike', 'You jump higher');
+insert into safetyequipment(id, type, producername, description) values(2, 'shoes', 'Adidas', 'You run faster');
+insert into safetyequipment(id, type, producername, description) values(3, 'clothes', 'Nike', 'Wearbles');
+insert into safetyequipment(id, type, producername, description) values(4, 'goggles', 'Nike', 'Nice kicks');
+insert into safetyequipment(id, type, producername, description) values(5, 'glasses', 'Gucci', 'You look cool');
+insert into safetyequipment(id, type, producername, description) values(6, 'mask', '3M', 'It actually saves your life');
+insert into safetyequipment(id, type, producername, description) values(7, 'mask', '3M', 'It actually saves your life');
+insert into safetyequipment(id, type, producername, description) values(8, 'gloves', 'Gucci', 'Protects you from bacteria');
+insert into safetyequipment(id, type, producername, description) values(9, 'mask', '3M', 'It actually saves your life');
+insert into safetyequipment(id, type, producername, description) values(10, 'mask', '3M', 'It actually saves your life');
+
+insert into ProvideEquipment(publicareaid, equipmentid) values(1, 1);
+insert into ProvideEquipment(publicareaid, equipmentid) values(1, 2);
+insert into ProvideEquipment(publicareaid, equipmentid) values(1, 3);
+insert into ProvideEquipment(publicareaid, equipmentid) values(1, 4);
+insert into ProvideEquipment(publicareaid, equipmentid) values(1, 5);
+insert into ProvideEquipment(publicareaid, equipmentid) values(2, 3);
+insert into ProvideEquipment(publicareaid, equipmentid) values(2, 4);
+insert into ProvideEquipment(publicareaid, equipmentid) values(2, 5);
+insert into ProvideEquipment(publicareaid, equipmentid) values(2, 6);
+insert into ProvideEquipment(publicareaid, equipmentid) values(2, 7);
+insert into ProvideEquipment(publicareaid, equipmentid) values(2, 8);
+insert into ProvideEquipment(publicareaid, equipmentid) values(3, 3);
+insert into ProvideEquipment(publicareaid, equipmentid) values(3, 1);
+insert into ProvideEquipment(publicareaid, equipmentid) values(3, 2);
+insert into ProvideEquipment(publicareaid, equipmentid) values(4, 6);
+insert into ProvideEquipment(publicareaid, equipmentid) values(4, 7);
+insert into ProvideEquipment(publicareaid, equipmentid) values(5, 8);
+insert into ProvideEquipment(publicareaid, equipmentid) values(5, 9);
+insert into ProvideEquipment(publicareaid, equipmentid) values(5, 10);
+insert into ProvideEquipment(publicareaid, equipmentid) values(6, 8);
+insert into ProvideEquipment(publicareaid, equipmentid) values(6, 7);
+insert into ProvideEquipment(publicareaid, equipmentid) values(7, 1);
+insert into ProvideEquipment(publicareaid, equipmentid) values(7, 5);
+insert into ProvideEquipment(publicareaid, equipmentid) values(7, 6);
+insert into ProvideEquipment(publicareaid, equipmentid) values(8, 10);
+insert into ProvideEquipment(publicareaid, equipmentid) values(9, 9);
+insert into ProvideEquipment(publicareaid, equipmentid) values(10, 10);
+
+
+
+
+
+
 

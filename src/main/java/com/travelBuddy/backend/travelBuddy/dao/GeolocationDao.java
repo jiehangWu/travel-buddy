@@ -7,4 +7,6 @@ import com.travelBuddy.backend.travelBuddy.entity.Geolocation;
 public interface GeolocationDao {
     
     List<Geolocation> findAllGeolocation();
+
+    List<String> findEquipmentsByLocation(double lat, double lon);
 }

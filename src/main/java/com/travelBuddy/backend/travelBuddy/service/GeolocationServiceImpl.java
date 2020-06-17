@@ -19,5 +19,10 @@ public class GeolocationServiceImpl implements GeolocationService {
     public List<Geolocation> findAllGeolocation() {
         return geoLocationDao.findAllGeolocation();
     }
+
+    @Override
+    public List<String> findEquipmentsByLocation(double lat, double lon) {
+        return geoLocationDao.findEquipmentsByLocation(lat, lon);
+    }
     
 }
