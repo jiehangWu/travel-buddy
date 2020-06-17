@@ -90,7 +90,7 @@ public class CovidCaseDaoImpl implements CovidCaseDao {
     }
 
     @Override
-    public List<CovidCase> findCovidByLatLngRange1(String lat, String lon) {
+    public List<CovidCase> findCovidByLatLngRange(String lat, String lon, String r) {
         final String sql = new StringBuilder()
                         .append("select latitude, longitude, count(*)")
                         .append(" from covidcase")
@@ -99,11 +99,12 @@ public class CovidCaseDaoImpl implements CovidCaseDao {
                         .append(" group by latitude, longitude")
                         .toString();
         
+        double range = Double.parseDouble(r);
         SqlParameterSource param = new MapSqlParameterSource()
-                        .addValue("latup", Double.parseDouble(lat)+1)
-                        .addValue("latdown", Double.parseDouble(lon)-1)
-                        .addValue("lonup", Double.parseDouble(lon)+1)
-                        .addValue("londown", Double.parseDouble(lon)-1);
+                        .addValue("latup", Double.parseDouble(lat)+range)
+                        .addValue("latdown", Double.parseDouble(lon)-range)
+                        .addValue("lonup", Double.parseDouble(lon)+range)
+                        .addValue("londown", Double.parseDouble(lon)-range);
 
         return template.query(sql, param, new BeanPropertyRowMapper(CovidCase.class));
     }

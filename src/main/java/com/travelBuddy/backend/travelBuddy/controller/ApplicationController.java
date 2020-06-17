@@ -82,10 +82,10 @@ public class ApplicationController {
         return covidCaseService.findCovidCaseByLatAndLon(lat, lon);
     }
 
-    @RequestMapping(path = "/covidcaserangelist/{lat}/{lon}", method = RequestMethod.GET)
+    @RequestMapping(path = "/covidcaserangelist/{lat}/{lon}/{r}", method = RequestMethod.GET)
     @ResponseBody
-    public List<CovidCase> getCovidCaseByLatAndLonRange(@PathVariable String lat, @PathVariable String lon) {
-        return covidCaseService.findCovidCaseByLatAndLonRange(lat, lon);
+    public List<CovidCase> getCovidCaseByLatAndLonRange(@PathVariable String lat, @PathVariable String lon, @PathVariable String r) {
+        return covidCaseService.findCovidCaseByLatAndLonRange(lat, lon, r);
     }
 
     @RequestMapping(path = "/covidcaselist/city/{lat}/{lon}", method = RequestMethod.GET)

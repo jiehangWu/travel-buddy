@@ -16,5 +16,5 @@ public interface CovidCaseDao {
 
     int findTotalCovidCaseByLatAndLon(String lat, String lon);
 
-    List<CovidCase> findCovidByLatLngRange1(String lat, String lon);
+    List<CovidCase> findCovidByLatLngRange(String lat, String lon, String r);
 }

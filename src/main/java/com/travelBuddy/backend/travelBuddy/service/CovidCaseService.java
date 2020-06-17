@@ -17,6 +17,6 @@ public interface CovidCaseService {
 
     int findTotalCovidCaseByLatAndLon(String lat, String lon);
 
-    List<CovidCase> findCovidCaseByLatAndLonRange(String lat, String lon);
+    List<CovidCase> findCovidCaseByLatAndLonRange(String lat, String lon, String r);
 }
 
