@@ -5,19 +5,19 @@ public class Geolocation {
     private String streetNumber;
     private String postcode;
 
-    public float getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float lon) {
+    public void setLongitude(String lon) {
         longitude = lon;
     }
 
-    public float getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(float lat) {
+    public void setLatitude(String lat) {
         latitude = lat;
     }
 
