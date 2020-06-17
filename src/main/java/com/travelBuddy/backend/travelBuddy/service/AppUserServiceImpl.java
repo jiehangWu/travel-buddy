@@ -17,4 +17,11 @@ public class AppUserServiceImpl implements AppUserService {
     public AppUser findAppUserById(int id) {
         return appUserDao.findAppUserById(id);
     }
+
+    @Override
+    public AppUser findAppUserByEmailPassword(String email, String password) {
+        return appUserDao.findAppUserByEmailPassword(email, password);
+    }
+
+    
 }
