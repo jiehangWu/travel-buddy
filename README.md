@@ -29,7 +29,7 @@ Show the number of covic cases by type.<br>
 **Method:**
 `GET`
 
-## Get Covid Case by Longitude and Latitude
+### Get Covid Case by Longitude and Latitude
 **URL:**
 /covidcaselist/:lat/:lon <br>
 **Method:**
@@ -41,7 +41,7 @@ Show the number of covic cases by type.<br>
 **Method:**
 `GET`
 
-## Insert Comment
+### Insert Comment
 Create new comment.<br>
 **URL:**
 /comment <br>
@@ -54,7 +54,7 @@ Create new comment.<br>
 **Method:**
 `PUT`
 
-## Downvote Comment
+### Downvote Comment
 **URL:**
 /downvote/:id <br>
 **Method:**
