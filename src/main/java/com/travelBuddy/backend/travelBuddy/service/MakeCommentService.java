@@ -19,7 +19,9 @@ public interface MakeCommentService {
 
     void deleteCommentById(int id);
 
-    List<MakeComment> findAllComments(); 
+    List<MakeComment> findAllComments();
+
+    List<MakeComment> findComments(String lat, String lng);
 
     AppUser findAppUserByUserId(int id);
 

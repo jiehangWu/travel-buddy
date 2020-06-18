@@ -29,7 +29,7 @@ public class AppUserDaoImpl implements AppUserDao {
     @Override
     public AppUser findAppUserByEmailPassword(String email, String password) {
         final String sql = new StringBuilder()
-                        .append("select displayname, gender, age, email, acceptedrisklevel, notificationmethod")
+                        .append("select id, displayname, gender, age, email, acceptedrisklevel, notificationmethod")
                         .append(" from appuser")
                         .append(" where email = :email and password = :password")
                         .toString();
